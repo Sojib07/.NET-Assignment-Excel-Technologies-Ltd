@@ -1,4 +1,5 @@
 ﻿using CustomerInformation.Infrastructure.Entities;
+using CustomerInformation.Infrastructure.Seeds;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -73,6 +74,9 @@ namespace CustomerInformation.Infrastructure.DbContexts
                 .Property(p => p.Id)
                 .ValueGeneratedOnAdd()
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+            
+            modelBuilder.Entity<Country>()
+                .HasData(new CountrySeed().Countries);
 
             base.OnModelCreating(modelBuilder);
         }

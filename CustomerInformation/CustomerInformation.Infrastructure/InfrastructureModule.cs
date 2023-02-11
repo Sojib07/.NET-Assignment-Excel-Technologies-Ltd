@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using CustomerInformation.Infrastructure.DbContexts;
+using CustomerInformation.Infrastructure.Repositories;
 using CustomerInformation.Infrastructure.UnitOfWorks;
 
 namespace FirstDemo.Infrastructure
@@ -27,8 +28,8 @@ namespace FirstDemo.Infrastructure
                 .WithParameter("migrationAssemblyName", _migrationAssemblyName)
                 .InstancePerLifetimeScope();
 
-            //builder.RegisterType<CourseService>().As<ICourseService>()
-            //    .InstancePerLifetimeScope();
+            builder.RegisterType<CountryRepository>().As<ICountryRepository>()
+                .InstancePerLifetimeScope();
 
             //builder.RegisterType<CourseRepository>().As<ICourseRepository>()
             //    .InstancePerLifetimeScope();
